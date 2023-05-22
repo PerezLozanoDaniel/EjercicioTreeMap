@@ -78,8 +78,8 @@ public class Perecedero implements ICalcular {
         return "Perecedero{" +
                 "caducidad=" + patronFecha.format(caducidad) +
                 ", datosProducto=" + getDatosProducto() +
-                "\nCoste Total de " + getCantidad()+
-                " unidades: "+ this.calcular() +
+                "\n"+this.calcular()+" es el Coste Total de " + getCantidad()+
+                " unidades."+
                 '}';
     }
 
