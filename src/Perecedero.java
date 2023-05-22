@@ -14,36 +14,46 @@ public class Perecedero implements ICalcular {
 
 
     public Perecedero(Date caducidad, Producto datosProducto) {
-        this.caducidad = caducidad;
-        this.datosProducto = datosProducto;
+        setCaducidad(caducidad);
+        setDatosProducto(datosProducto);
     }
 
     public int calculaCaducidad(){
         Date fechaActual = new Date();
-        return (int) caducidad.compareTo(fechaActual);
-
+        return (int)((getCaducidad().getTime()-fechaActual.getTime())/86400000)+1;
     }
+
+    public void introducirCantidad () {
+        System.out.println("Introduce la catidad de productos perecederos " + getDatosProducto().getNombre() + ": ");
+        this.cantidad = lecturaTeclado.nextInt();
+    }
+    public int getCantidad() {
+        return this.cantidad;
+    }
+
+
     @Override
     public double calcular() {
-        Date fechaActual = new Date();
-        System.out.println("\nIntroduce la catidad de productos perecederos "+ getDatosProducto().getNombre() + ": ");
-        this.cantidad =lecturaTeclado.nextInt();
-
+        introducirCantidad();
+        System.out.println("Días para caducar: "+calculaCaducidad());
         if (calculaCaducidad() <= 3) {
             switch (calculaCaducidad()) {
                 case 1:
                     this.precioTotal=((this.datosProducto.getPrecio() * this.cantidad) / 4);
+                    break;
                 case 2:
                     this.precioTotal=((this.datosProducto.getPrecio() * this.cantidad) / 3);
+                    break;
                 case 3:
                     this.precioTotal=((this.datosProducto.getPrecio() * this.cantidad) / 2);
-
+                    break;
+                default:break;
             }
-
-
-        } else {
+        }
+        else {
             this.precioTotal=(this.datosProducto.getPrecio() * this.cantidad);
         }
+
         return this.precioTotal;
     }
 
@@ -65,11 +75,12 @@ public class Perecedero implements ICalcular {
 
     @Override
     public String toString() {
-        return String.format("Perecedero{" +
+        return "Perecedero{" +
                 "caducidad=" + patronFecha.format(caducidad) +
-                ", datosProducto=" + this.datosProducto +
-                "\nCoste Total de " + this.cantidad +
+                ", datosProducto=" + getDatosProducto() +
+                "\nCoste Total de " + getCantidad()+
                 " unidades: "+ this.calcular() +
-                '}');
+                '}';
     }
+
 }

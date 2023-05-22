@@ -40,8 +40,8 @@ public class NoPerecedero implements ICalcular{
     @Override
     public String toString() {
         return "NoPerecedero{" +
-                "tipo='" + tipo + '\'' +
-                ", datosProducto=" + datosProducto.toString() +
+                "tipo='" + getTipo() + '\'' +
+                ", datosProducto=" + getDatosProducto() +
                 '}';
     }
 }

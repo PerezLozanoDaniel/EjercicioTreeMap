@@ -26,13 +26,13 @@ public class Main {
         Date caducidad2 = patronFecha.parse("15-09-2023");
         Date caducidad3 = patronFecha.parse("22-07-2023");
         Date caducidad4 = patronFecha.parse("04-12-2023");
-        Date caducidad5 = patronFecha.parse("20-05-2023");
+        Date caducidad5 = patronFecha.parse("25-05-2023");
 
         Perecedero perecedero1 = new Perecedero(caducidad1, new Producto("Leche", 0.89, "L5467"));
         Perecedero perecedero2 = new Perecedero(caducidad2, new Producto("Harina", 1.20, "H5897"));
         Perecedero perecedero3 = new Perecedero(caducidad3, new Producto("Yogur", 0.59, "Y5363"));
         Perecedero perecedero4 = new Perecedero(caducidad4, new Producto("Chocolate", 2.49, "C5456"));
-        Perecedero perecedero5 = new Perecedero(caducidad5, new Producto("Anacardos", 12.89, "A5412"));
+        Perecedero perecedero5 = new Perecedero(caducidad5, new Producto("Anacardos", 12.99, "A5412"));
 
         inventario.put(perecedero1.getDatosProducto().getCodigo(), perecedero1);
         inventario.put(perecedero2.getDatosProducto().getCodigo(), perecedero2);
@@ -40,12 +40,17 @@ public class Main {
         inventario.put(perecedero4.getDatosProducto().getCodigo(), perecedero4);
         inventario.put(perecedero5.getDatosProducto().getCodigo(), perecedero5);
 
+        inventario.put(noPerecedero1.getDatosProducto().getCodigo(), noPerecedero1);
+        inventario.put(noPerecedero2.getDatosProducto().getCodigo(), noPerecedero2);
+        inventario.put(noPerecedero3.getDatosProducto().getCodigo(), noPerecedero3);
+        inventario.put(noPerecedero4.getDatosProducto().getCodigo(), noPerecedero4);
+        inventario.put(noPerecedero5.getDatosProducto().getCodigo(), noPerecedero5);
+
         for(ICalcular datosArticulo : inventario.values()) {
                 System.out.println("Articulo "+ datosArticulo+"\n");
-            }
-
         }
     }
+}
 
 
 
